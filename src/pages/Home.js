@@ -62,52 +62,53 @@ const Home = () => {
                 </div>
             </div>
             <section className="feature">
-                <h2>OUR FEATURED VEGAN FOOD ITEMS</h2>
+                <h2>OUR FEATURED FOOD ITEMS</h2>
                 <div className="feature-grid">
                     <article>
-                        <img src="/images/1.png"></img>
-                        <h3>food item</h3>
+                        <a href="/menu">
+                            <img src="/images/1.png" alt="lasagna"></img>
+                        </a>
+                        <h3>Lasagna</h3>
                         <p>
-                            Planet Special Naan With Basil Pesto Sauce Topped
-                            With Broccoli, Spinach, Feta Cheese, Black Olives &
-                            Red Peppers And Garnished With Vegan Mayonnaise.
+                            This vegetarian lasagna is cheesy (of course), and
+                            loaded with vegetables, spinach and a simple tomato
+                            sauce.
                         </p>
                     </article>
                     <article>
-                        <img src="/images/1.png"></img>
-                        <h3>food item</h3>
+                        <a href="/menu">
+                            <img src="/images/3.png" alt="caesar salad"></img>
+                        </a>
+                        <h3>Caesar salad</h3>
                         <p>
-                            Planet Special Naan With Basil Pesto Sauce Topped
-                            With Broccoli, Spinach, Feta Cheese, Black Olives &
-                            Red Peppers And Garnished With Vegan Mayonnaise.
+                            The crowd-pleasing salad of crisp romaine leaves,
+                            crunchy croutons, and a little or a lot of anchovy,
+                            as you like.
                         </p>
                     </article>
                     <article>
-                        <img src="/images/1.png"></img>
-                        <h3>food item</h3>
-                        <p>
-                            Planet Special Naan With Basil Pesto Sauce Topped
-                            With Broccoli, Spinach, Feta Cheese, Black Olives &
-                            Red Peppers And Garnished With Vegan Mayonnaise.
-                        </p>
+                        <a href="/menu">
+                            <img src="/images/4.png" alt="protein balls"></img>
+                        </a>
+                        <h3>Protein Balls</h3>
+                        <p>Energy up!!!</p>
                     </article>
                     <article>
-                        <img src="/images/1.png"></img>
-                        <h3>food item</h3>
-                        <p>
-                            Planet Special Naan With Basil Pesto Sauce Topped
-                            With Broccoli, Spinach, Feta Cheese, Black Olives &
-                            Red Peppers And Garnished With Vegan Mayonnaise.
-                        </p>
+                        <a href="/menu">
+                            <img src="/images/5.png" alt="Protein Balls"></img>
+                        </a>
+                        <h3>Fish and Rice</h3>
+                        <p>Fresh catch means great taste</p>
                     </article>
                     <article>
-                        <img src="/images/1.png"></img>
-                        <h3>food item</h3>
-                        <p>
-                            Planet Special Naan With Basil Pesto Sauce Topped
-                            With Broccoli, Spinach, Feta Cheese, Black Olives &
-                            Red Peppers And Garnished With Vegan Mayonnaise.
-                        </p>
+                        <a href="/menu">
+                            <img
+                                src="/images/img-20230327-WA0040.jpg"
+                                alt="Fish and Rice"
+                            ></img>
+                        </a>
+                        <h3>Pizzia</h3>
+                        <p>Our pizzas made with fresh ingredients</p>
                     </article>
                 </div>
             </section>
