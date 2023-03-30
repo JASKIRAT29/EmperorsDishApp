@@ -1,54 +1,67 @@
 const { gql } = require('apollo-server-express');
 
+// Define GraphQL type definitions
 const typeDefs = gql`
   type MenuItem {
-    _id: ID
-    name: String
+    _id: ID!
+    name: String!
     description: String
-    price: Number
+    price: Float
     category: String
     image: String
+    reviews: [Review]
+  }
+
+  type OrderItem {
+    item: MenuItem
+    quantity: Int
   }
 
   type Order {
-    _id: ID
-    items: mongoose.Schema.Types.ObjectId
-    total: Number
-    customerName: String
-    customerEmail: String
-    customerPhone: String
-    deliveryAddress: String
-    status: String
-    createdAt: Date
-  }
-
-  type Reservation {
-    _id: ID
-    date: Date
-    time: String
-    partySize: Number
-    customerName: String
-    customerEmail: String
-    customerPhone: String
-    status: String
-    createdAt: Date
+    _id: ID!
+    customerName: String!
+    customerEmail: String!
+    items: [OrderItem]
+    total: Float
+    createdAt: String
   }
 
   type Review {
-    _id: ID
-    restaurantID: mongoose.Schema.Types.ObjectId
-    customerID: mongoose.Schema.Types.ObjectId
-    rating: Number
+    _id: ID!
+    menuItem: MenuItem
+    rating: Int
     comment: String
-    createdAt: Date
+    createdAt: String
+  }
 
+  input OrderItemInput {
+    itemId: ID
+    quantity: Int
+  }
+
+  input OrderInput {
+    customerName: String!
+    customerEmail: String!
+    items: [OrderItemInput!]!
+    total: Float!
+  }
+  
   type Query {
-    //add queries
+    menuItems: [MenuItem]
+    order(_id: ID): Order
+    orders: [Order!]
   }
 
   type Mutation {
-    //add mutations
+    addMenuItem(name: String, description: String, price: Float, category: String, image: String): MenuItem
+    updateMenuItem(_id: ID, name: String, description: String, price: Float, category: String, image: String): MenuItem
+    deleteMenuItem(_id: ID): MenuItem
+    createOrder(order: OrderInput!): Order
+    deleteOrder(_id: ID): Order
+    addReview(menuItemId: ID, rating: Int, comment: String): Review
   }
+
+  
 `;
 
 module.exports = typeDefs;
