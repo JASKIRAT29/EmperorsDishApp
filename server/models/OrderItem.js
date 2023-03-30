@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 // Define schema for orders
 const orderItemSchema = new mongoose.Schema({
-  items: {
+  item: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'MenuItem',
     required: true

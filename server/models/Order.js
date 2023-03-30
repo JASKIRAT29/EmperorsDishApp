@@ -1,5 +1,6 @@
 // Import required libraries
 const mongoose = require('mongoose');
+const orderItemSchema = require('./OrderItem')
 
 // Define schema for orders
 const orderSchema = new mongoose.Schema({
