@@ -1,6 +1,6 @@
 // Import required libraries
 const mongoose = require('mongoose');
-const orderItemSchema = require('./OrderItem')
+const orderItemSchema = require('./OrderItem');
 
 // Define schema for orders
 const orderSchema = new mongoose.Schema({
@@ -12,10 +12,15 @@ const orderSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  items: {
-    type:[orderItemSchema],
-    require:true
-  },
+  // items: {
+  //   type:[orderItemSchema],
+  //   required:true
+  // },
+  items: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'OrderItem',
+    required:true
+  }],
   total: {
     type: Number,
     required: true
