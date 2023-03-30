@@ -1,29 +1,43 @@
-// Import required libraries
 const express = require('express');
-const mongoose = require('mongoose');
+const { ApolloServer } = require('apollo-server-express');
+const path = require('path');
 
-// Import routes
-const menuRoutes = require('./routes/menu');
-const orderRoutes = require('./routes/order');
-const reservationRoutes = require('./routes/reservation');
-const reviewRoutes = require('./routes/review');
+const { typeDefs, resolvers } = require('./schemas');
+const db = require('./config/connection');
 
-// Initialize express app
+const PORT = process.env.PORT || 3001;
 const app = express();
 
-// Set up middleware
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-// Connect to database
-mongoose.connect('mongodb://localhost:27017/restaurant', { useNewUrlParser: true, useUnifiedTopology: true });
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+}
 
-// Set up routes
-app.use('/api/menu', menuRoutes);
-app.use('/api/order', orderRoutes);
-app.use('/api/reservation', reservationRoutes);
-app.use('/api/review', reviewRoutes);
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
 
-// Start server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+// Create a new instance of an Apollo server with the GraphQL schema
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
+
+const startApolloServer = async (typeDefs, resolvers) => {
+  await server.start();
+  server.applyMiddleware({ app });
+  
+  db.once('open', () => {
+    app.listen(PORT, () => {
+      console.log(`API server running on port ${PORT}!`);
+      console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+    })
+  })
+  };
+  
+// Call the async function to start the server
+  startApolloServer(typeDefs, resolvers);
+ 

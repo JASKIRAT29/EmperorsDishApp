@@ -2,15 +2,15 @@
 const mongoose = require('mongoose');
 
 // Import restaurant models
-const MenuItem = require('./menu-item');
-const Order = require('./order');
-const Reservation = require('./reservation');
-const Review = require('./review');
+const MenuItem = require('./MenuItem');
+const Order = require('./Order');
+const OrderItem = require('./OrderItem');
+const Review = require('./Review');
 
 // Export restaurant models
 module.exports = {
   MenuItem,
   Order,
-  Reservation,
+  OrderItem,
   Review
 };

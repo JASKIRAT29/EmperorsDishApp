@@ -22,7 +22,11 @@ const menuItemSchema = new mongoose.Schema({
   },
   image: {
     type: String
-  }
+  },
+  reviews: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Review'
+  }]
 });
 
 // Create model for menu items
