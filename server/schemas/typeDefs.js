@@ -23,6 +23,7 @@ const typeDefs = gql`
     customerEmail: String!
     items: [OrderItem]
     total: Float
+    status: String
     createdAt: String
   }
 
