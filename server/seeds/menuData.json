@@ -1,0 +1,57 @@
+[  { 
+    "name": "Cou Cou and Flying Fish",    
+    "description": "The national dish of Barbados, Cou Cou and Flying Fish is a meal made with cornmeal and okra, served with seasoned flying fish.",    
+    "price": 15.99,    
+    "category": "entrees",    
+    "image": "https://via.placeholder.com/300",    
+    "reviews": []
+  },
+  {
+    "name": "Macaroni Pie",
+    "description": "Macaroni pie is a popular side dish in Barbados made with macaroni, cheese, and various seasonings.",
+    "price": 5.99,
+    "category": "entrees",
+    "image": "https://via.placeholder.com/300",
+    "reviews": []
+  },
+  {
+    "name": "Fish Cakes",
+    "description": "Fish cakes are a popular snack food in Barbados made with salted codfish and various seasonings.",
+    "price": 3.99,
+    "category": "appetizers",
+    "image": "https://via.placeholder.com/300",
+    "reviews": []
+  },
+  {
+    "name": "Pudding and Souse",
+    "description": "Pudding and souse is a traditional Bajan dish made with steamed sweet potato and pickled pork.",
+    "price": 12.99,
+    "category": "entrees",
+    "image": "https://via.placeholder.com/300",
+    "reviews": []
+  },
+  {
+    "name": "Bajan Pepperpot",
+    "description": "Bajan Pepperpot is a hearty stew made with various meats, okra, and spices.",
+    "price": 14.99,
+    "category": "entrees",
+    "image": "https://via.placeholder.com/300",
+    "reviews": []
+  },
+  {
+    "name": "Conkies",
+    "description": "Conkies are a traditional Barbadian dessert made with cornmeal, coconut, pumpkin, and various spices.",
+    "price": 3.99,
+    "category": "desserts",
+    "image": "https://via.placeholder.com/300",
+    "reviews": []
+  },
+  {
+    "name": "Guava Cheese",
+    "description": "Guava cheese is a sweet dessert made with guava pulp and sugar, often served as a snack in Barbados.",
+    "price": 2.99,
+    "category": "desserts",
+    "image": "https://via.placeholder.com/300",
+    "reviews": []
+  }
+]
