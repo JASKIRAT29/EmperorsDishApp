@@ -16,9 +16,9 @@ const resolvers = {
         return await Review.find();
       },
       //get review by id
-      review: async (_, { id }) => {
-        return await Review.findById(id);
-      },
+      // review: async (_, { id }) => {
+      //   return await Review.findById(id);
+      // },
     },
     //define resolvers for mutations
     Mutation: {
@@ -42,13 +42,6 @@ const resolvers = {
       //create review
       createReview: async (_, { input }) => {
         const review = await Review.create(input);
-        return review;
-      },
-      //update review
-      updateReview: async (_, { id, input }) => {
-        const review = await Review.findById(id);
-        review.set(input);
-        await review.save();
         return review;
       },
       //delete review by id
@@ -81,6 +74,10 @@ const resolvers = {
         return await MenuItem.findById(review.menuItemId);
       },
     },
+    // reviews: async () => {
+    //   return await Review.find();
+    // },
+
   };
   
 

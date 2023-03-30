@@ -49,17 +49,20 @@ const typeDefs = gql`
   
   type Query {
     menuItems: [MenuItem]
+    menuItem(_id: ID!): MenuItem
     order(_id: ID): Order
     orders: [Order!]
+    reviews: [Review]
   }
 
   type Mutation {
-    addMenuItem(name: String, description: String, price: Float, category: String, image: String): MenuItem
+    createMenuItem(name: String, description: String, price: Float, category: String, image: String): MenuItem
     updateMenuItem(_id: ID, name: String, description: String, price: Float, category: String, image: String): MenuItem
     deleteMenuItem(_id: ID): MenuItem
     createOrder(order: OrderInput!): Order
     deleteOrder(_id: ID): Order
-    addReview(menuItemId: ID, rating: Int, comment: String): Review
+    createReview(menuItemId: ID, rating: Int, comment: String): Review
+    deleteReview(_id: ID): Review
   }
 
   
