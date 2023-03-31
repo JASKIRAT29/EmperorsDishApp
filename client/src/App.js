@@ -6,12 +6,12 @@ import Menu from "./pages/Menu";
 import Reviews from "./pages/Reviews";
 import Order from "./pages/Order";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { HashRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 
 function App() {
     return (
         <div className="App">
-            <HashRouter>
+            <Router>
                 <Nav />
                 <Routes>
                     <Route path="/" element={<Home />} />
@@ -20,7 +20,7 @@ function App() {
                     <Route path="/order" element={<Order />} />
                 </Routes>
                 <Footer />
-            </HashRouter>
+            </Router>
         </div>
     );
 }
