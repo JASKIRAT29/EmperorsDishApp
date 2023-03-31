@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Menu from "./pages/Menu";
 import Reviews from "./pages/Reviews";
 import Order from "./pages/Order";
+import Login from "./pages/Login";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
                     <Route path="/menu" element={<Menu />} />
                     <Route path="/reviews" element={<Reviews />} />
                     <Route path="/order" element={<Order />} />
+                    <Route path="/login" element={<Login />} />
                 </Routes>
                 <Footer />
             </Router>
