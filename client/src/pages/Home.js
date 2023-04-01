@@ -16,7 +16,7 @@ const Home = () => {
 
                     <table>
                         <thead>
-                        <h2>Opening hours</h2>
+                        {/* <h2>Opening hours</h2> */}
 
                         </thead>
                         <tbody>
