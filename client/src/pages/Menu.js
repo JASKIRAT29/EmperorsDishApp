@@ -1,57 +1,27 @@
 import React from "react";
+import { useQuery } from '@apollo/client';
+import { GET_MENU_ITEMS } from '../utils/queries';
 
 const Menu = () => {
+    const {loading, data} = useQuery(GET_MENU_ITEMS);
+
+    if (loading) return <p>Loading...</p>
+
+    const menuItems = data.menuItems;
+
     return (
         <div>
-            {" "}
             <section className="feature">
-                <h2>OUR FEATURED VEGAN FOOD ITEMS</h2>
+                <h2>OUR DAILY MENU</h2>
                 <div className="feature-grid">
-                    <article>
-                        <img src="/images/1.png"></img>
-                        <h3>food item</h3>
-                        <p>
-                            Planet Special Naan With Basil Pesto Sauce Topped
-                            With Broccoli, Spinach, Feta Cheese, Black Olives &
-                            Red Peppers And Garnished With Vegan Mayonnaise.
-                        </p>
-                    </article>
-                    <article>
-                        <img src="/images/1.png"></img>
-                        <h3>food item</h3>
-                        <p>
-                            Planet Special Naan With Basil Pesto Sauce Topped
-                            With Broccoli, Spinach, Feta Cheese, Black Olives &
-                            Red Peppers And Garnished With Vegan Mayonnaise.
-                        </p>
-                    </article>
-                    <article>
-                        <img src="/images/1.png"></img>
-                        <h3>food item</h3>
-                        <p>
-                            Planet Special Naan With Basil Pesto Sauce Topped
-                            With Broccoli, Spinach, Feta Cheese, Black Olives &
-                            Red Peppers And Garnished With Vegan Mayonnaise.
-                        </p>
-                    </article>
-                    <article>
-                        <img src="/images/1.png"></img>
-                        <h3>food item</h3>
-                        <p>
-                            Planet Special Naan With Basil Pesto Sauce Topped
-                            With Broccoli, Spinach, Feta Cheese, Black Olives &
-                            Red Peppers And Garnished With Vegan Mayonnaise.
-                        </p>
-                    </article>
-                    <article>
-                        <img src="/images/1.png"></img>
-                        <h3>food item</h3>
-                        <p>
-                            Planet Special Naan With Basil Pesto Sauce Topped
-                            With Broccoli, Spinach, Feta Cheese, Black Olives &
-                            Red Peppers And Garnished With Vegan Mayonnaise.
-                        </p>
-                    </article>
+                    {menuItems.map(item => (
+                        <article>
+                            <img src={item.image} alt={item.name} />
+                            <h3>{item.name}</h3>
+                            <p>{item.description}</p>
+                            <p>${item.price}</p>
+                        </article>
+                    ))}
                 </div>
             </section>
         </div>
