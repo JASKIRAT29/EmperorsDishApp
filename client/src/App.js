@@ -13,10 +13,11 @@ const client = new ApolloClient({
     cache: new InMemoryCache(),
   });
 
+
 function App() {
     return (
      <ApolloProvider client={client}>  
-        <div className="App">
+        <div id="root" className="App">
             <Router>
                 <Nav />
                 <Routes>
