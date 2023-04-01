@@ -112,7 +112,7 @@ const Home = () => {
                                 alt="Fish and Rice"
                             ></img>
                         </a>
-                        <h3>Pizzia</h3>
+                        <h3>Pizzas</h3>
                         <p>Our pizzas made with fresh ingredients</p>
                     </article>
                 </div>
