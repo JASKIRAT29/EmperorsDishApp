@@ -3,9 +3,12 @@ import { useQuery } from '@apollo/client';
 import { GET_MENU_ITEMS } from '../utils/queries';
 
 const Menu = () => {
-    const {loading, data} = useQuery(GET_MENU_ITEMS);
+    const {loading, data, error} = useQuery(GET_MENU_ITEMS);
 
     if (loading) return <p>Loading...</p>
+    if (error) return <p>Error: {error.message}</p>;
+    if (!data || !data.menuItems) return <p>No menu items available.</p>;
+  
 
     const menuItems = data.menuItems;
 

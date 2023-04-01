@@ -60,20 +60,14 @@ const resolvers = {
         return order;
       },
     },
-    //resolvers for menu item
-    MenuItem: {
-      //get all reviews for menu item  
-      reviews: async (menuItem) => {
-        return await Review.find({ menuItemId: menuItem.id });
-      },
-    },
+    
     //resolvers for review
-    Review: {
-      //get menu item for a review  
-      menuItem: async (review) => {
-        return await MenuItem.findById(review.menuItemId);
-      },
-    },
+    // Review: {
+    //   //get menu item for a review  
+    //   menuItem: async (review) => {
+    //     return await MenuItem.findById(review.menuItemId);
+    //   },
+    // },
     // reviews: async () => {
     //   return await Review.find();
     // },

@@ -3,9 +3,8 @@ const mongoose = require('mongoose');
 
 // Define schema for reviews
 const reviewSchema = new mongoose.Schema({
-  menuItem: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'MenuItem',
+  name: {
+    type: String,
     required: true
   },
   rating: {

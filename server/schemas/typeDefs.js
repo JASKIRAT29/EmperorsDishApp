@@ -7,9 +7,7 @@ const typeDefs = gql`
     name: String!
     description: String
     price: Float
-    category: String
     image: String
-    reviews: [Review]
   }
 
   type OrderItem {
@@ -29,7 +27,7 @@ const typeDefs = gql`
 
   type Review {
     _id: ID!
-    menuItem: MenuItem
+    name: String
     rating: Int
     comment: String
     createdAt: String
@@ -56,8 +54,8 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    createMenuItem(name: String, description: String, price: Float, category: String, image: String): MenuItem
-    updateMenuItem(_id: ID, name: String, description: String, price: Float, category: String, image: String): MenuItem
+    createMenuItem(name: String, description: String, price: Float, image: String): MenuItem
+    updateMenuItem(_id: ID, name: String, description: String, price: Float, image: String): MenuItem
     deleteMenuItem(_id: ID): MenuItem
     createOrder(order: OrderInput!): Order
     deleteOrder(_id: ID): Order
