@@ -2,20 +2,20 @@ import React from "react";
 import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
 import { useState, useEffect } from "react";
-import Review from  "../../../server/"
+import { useQuery, useMutation } from '@apollo/client';
+
+import { GET_REVIEWS } from '../utils/queries';
+import { CREATE_REVIEW } from '../utils/mutations';
 
 const Reviews = () => {
     const [name, setName] = useState("");
     const [message, setMessage] = useState("");
-    const [reviews, setReviews] = useState([]);
 
-    useEffect(() => {
-        Review.find().then((data) => {
-          setReviews(data);
-        });
-      }, []);
-    
+    const { loading, error, data } = useQuery(GET_REVIEWS);
+    const reviews = data?.reviews || [];
 
+    if (loading) return <p>Loading...</p>;
+    if (error) console.log(error);//return <p>Error</p>;
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -23,6 +23,7 @@ const Reviews = () => {
         setMessage("");
         setName("");
     };
+
     return (
         <div className="review">
             <h3>Please Review our food</h3>
@@ -49,7 +50,7 @@ const Reviews = () => {
             </form>
             <div className="reviews">
                 {reviews.map((review) => (
-                <div key={review._id}>
+                <div key={review.id}>
                     <h4>{review.name}</h4>
                     <p>{review.comment}</p>
                 </div>

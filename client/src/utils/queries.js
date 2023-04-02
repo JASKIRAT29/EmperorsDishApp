@@ -12,10 +12,10 @@ export const GET_MENU_ITEMS = gql`
   }
 `;
 
-const GET_REVIEWS = gql`
-  query getReviews {
+export const GET_REVIEWS = gql`
+  query reviews {
     reviews {
-      id
+      _id
       name
       rating
       comment
