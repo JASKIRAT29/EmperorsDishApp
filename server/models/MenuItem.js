@@ -15,18 +15,9 @@ const menuItemSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  category: {
-    type: String,
-    enum: ['appetizers', 'entrees', 'desserts', 'drinks'],
-    required: true
-  },
   image: {
     type: String
-  },
-  reviews: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Review'
-  }]
+  }
 });
 
 // Create model for menu items

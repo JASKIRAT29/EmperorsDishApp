@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Menu from "./pages/Menu";
 import Reviews from "./pages/Reviews";
 import Order from "./pages/Order";
+import Admin from "./pages/Admin";
 
 const client = new ApolloClient({
     uri: '/graphql',
@@ -17,7 +18,7 @@ const client = new ApolloClient({
 function App() {
     return (
      <ApolloProvider client={client}>  
-        <div id="root" className="App">
+        <div className="App">
             <Router>
                 <Nav />
                 <Routes>
@@ -25,6 +26,7 @@ function App() {
                     <Route path="/menu" element={<Menu />} />
                     <Route path="/reviews" element={<Reviews />} />
                     <Route path="/order" element={<Order />} />
+                    <Route path="/admin" element={<Admin />} />
                 </Routes>
                 <Footer />
             </Router>

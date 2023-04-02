@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a full-stack MERN stack web application developed for a restaurant. The motivation was to showcase the team's ability to quickly develop a full-stack web application with modern technologies. The project solves the problem of enabling customers to browse the restaurant's menu and make orders online. Through this project, the team learned about the entire web development process, from designing and building the user interface to implementing backend functionality and deploying the application to a production environment. and gained experience in building a full-stack application with MERN technologies.
+This is a full-stack MERN stack web application developed for a restaurant. The motivation was to showcase the team's ability to quickly develop a full-stack web application with modern technologies. The project solves the problem of allowing customers to browse the restaurant's menu and make orders online. Through this project, the team learned about the entire web development process, from designing and building the user interface to implementing backend functionality and deploying the application to a production environment. and gained experience in building a full-stack application with MERN technologies.
 
 ## Table of Contents
 
