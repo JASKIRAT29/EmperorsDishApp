@@ -20,14 +20,14 @@ function App() {
     return (
      <ApolloProvider client={client}>  
         <div className="App">
-            <Router>
+            <Router basename="/">
                 <Nav />
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/menu" element={<Menu />} />
-                    <Route path="/reviews" element={<Reviews />} />
-                    <Route path="/order" element={<Order />} />
-                    <Route path="/admin" element={<Admin />} />
+                    <Route exact path="/" element={<Home />} />
+                    <Route exact path="/menu" element={<Menu />} />
+                    <Route exact path="/reviews" element={<Reviews />} />
+                    <Route exact path="/order" element={<Order />} />
+                    <Route exact path="/admin" element={<Admin />} />
                     <Route path="/login" element={<Login />} />
                 </Routes>
                 <Footer />

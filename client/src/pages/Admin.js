@@ -8,7 +8,7 @@ import {
 import { GET_MENU_ITEMS } from "../utils/queries";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";import Auth from '../utils/auth';
-import { Button } from 'react-bootstrap';
+import { button } from 'react-bootstrap';
 
 
 const Admin = () => {
@@ -119,6 +119,7 @@ const Admin = () => {
     //update div
     return (
         <div className="admin-container">
+          <button onClick={Auth.logout}>Logout</button>
             <section className="add-menu-item">
                 <h2>Add item to menu:</h2>
                 <form onSubmit={handleFormSubmit}>
