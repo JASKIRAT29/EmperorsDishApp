@@ -1,11 +1,22 @@
 import React from "react";
 import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Review from  "../../../server/"
 
 const Reviews = () => {
     const [name, setName] = useState("");
     const [message, setMessage] = useState("");
+    const [reviews, setReviews] = useState([]);
+
+    useEffect(() => {
+        Review.find().then((data) => {
+          setReviews(data);
+        });
+      }, []);
+    
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(name, message);
@@ -36,6 +47,14 @@ const Reviews = () => {
                     submit
                 </Button>
             </form>
+            <div className="reviews">
+                {reviews.map((review) => (
+                <div key={review._id}>
+                    <h4>{review.name}</h4>
+                    <p>{review.comment}</p>
+                </div>
+                ))}
+            </div>
         </div>
     );
 };
