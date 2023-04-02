@@ -14,7 +14,9 @@ const Reviews = () => {
     const { loading, data } = useQuery(GET_REVIEWS);
     const reviews = data?.reviews || [];
 
-    const [createReview, {error}] = useMutation(CREATE_REVIEW);
+    const [createReview, {error}] = useMutation(CREATE_REVIEW, {
+        refetchQueries: [{ query: GET_REVIEWS }]
+      });
 
     const handleSubmit = async (e) => {
         e.preventDefault();

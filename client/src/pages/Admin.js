@@ -8,6 +8,9 @@ import {
 import { GET_MENU_ITEMS } from "../utils/queries";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+//import  { showUploadWidget } from 'cloudinary'; // import the showUploadWidget function
+const cloudinary = require('cloudinary').v2;
+
 
 const Admin = () => {
     //vars for create
@@ -38,6 +41,10 @@ const Admin = () => {
     );
 
     //do if add item
+    const handleImageUpload = () => {
+        //showUploadWidget(); // call the showUploadWidget function on button click
+      };
+
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
@@ -162,6 +169,7 @@ const Admin = () => {
                             onChange={(event) => setImage(event.target.value)}
                         />
                     </div>
+                    <Button onClick={handleImageUpload}>Upload Image</Button>
                     <Button type={"submit"} variant="outlined">
                         Add Item
                     </Button>
