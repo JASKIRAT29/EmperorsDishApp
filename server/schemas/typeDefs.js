@@ -59,7 +59,7 @@ const typeDefs = gql`
     deleteMenuItem(_id: ID): MenuItem
     createOrder(order: OrderInput!): Order
     deleteOrder(_id: ID): Order
-    createReview(menuItemId: ID, rating: Int, comment: String): Review
+    createReview(_id: ID, name:String, rating: Int, comment: String): Review
     deleteReview(_id: ID): Review
   }
 
