@@ -8,6 +8,7 @@ import Menu from "./pages/Menu";
 import Reviews from "./pages/Reviews";
 import Order from "./pages/Order";
 import Admin from "./pages/Admin";
+import Login from "./pages/Login";
 
 const client = new ApolloClient({
     uri: '/graphql',
@@ -27,6 +28,7 @@ function App() {
                     <Route exact path="/reviews" element={<Reviews />} />
                     <Route exact path="/order" element={<Order />} />
                     <Route exact path="/admin" element={<Admin />} />
+                    <Route path="/login" element={<Login />} />
                 </Routes>
                 <Footer />
             </Router>
