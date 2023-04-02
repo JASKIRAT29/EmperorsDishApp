@@ -27,9 +27,8 @@ const typeDefs = gql`
 
   type Review {
     _id: ID!
-    name: String
-    rating: Int
-    comment: String
+    name: String!
+    comment: String!
     createdAt: String
   }
 
@@ -59,7 +58,7 @@ const typeDefs = gql`
     deleteMenuItem(_id: ID): MenuItem
     createOrder(order: OrderInput!): Order
     deleteOrder(_id: ID): Order
-    createReview(_id: ID, name:String, rating: Int, comment: String): Review
+    createReview(_id: ID, name:String, comment: String): Review
     deleteReview(_id: ID): Review
   }
 

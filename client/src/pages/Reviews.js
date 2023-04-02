@@ -11,18 +11,25 @@ const Reviews = () => {
     const [name, setName] = useState("");
     const [message, setMessage] = useState("");
 
-    const { loading, error, data } = useQuery(GET_REVIEWS);
+    const { loading, data } = useQuery(GET_REVIEWS);
     const reviews = data?.reviews || [];
 
-    const [createReview] = useMutation(CREATE_REVIEW);
+    const [createReview, {error}] = useMutation(CREATE_REVIEW);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!name || !message) {
+            alert("Please provide both a name and a message.");
+            return;
+          }
+
+        alert(name +  " "  + message);
         try {
             const { data } = await createReview({
               variables: { name: name, comment: message }
             });
-        console.log(name, message);
+        console.log(data);
         setMessage("");
         setName("");
         }catch(err){
@@ -59,7 +66,7 @@ const Reviews = () => {
             </form>
             <div className="reviews">
                 {reviews.map((review) => (
-                <div key={review.id}>
+                <div key={review._id}>
                     <h4>{review.name}</h4>
                     <p>{review.comment}</p>
                 </div>
