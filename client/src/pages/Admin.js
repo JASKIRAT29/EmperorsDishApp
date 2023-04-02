@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { useMutation } from '@apollo/client';
-import { CREATE_MENU_ITEM } from '../utils/mutations';
+import { useMutation, useQuery } from '@apollo/client';
+import { CREATE_MENU_ITEM, DELETE_MENU_ITEM } from '../utils/mutations';
+import { GET_MENU_ITEMS } from '../utils/queries';
+
 
 const Admin = () => {
   const [name, setName] = useState('');
@@ -9,9 +11,15 @@ const Admin = () => {
   const [image, setImage] = useState('');
   const [createMenuItem, { error }] = useMutation(CREATE_MENU_ITEM);
 
+  const [selectedItem, setSelectedItem] = useState("");
+    const {loading, data} = useQuery(GET_MENU_ITEMS);
+    const [deleteMenuItem] = useMutation(DELETE_MENU_ITEM, {
+        refetchQueries: [{ query: GET_MENU_ITEMS }]
+    });
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    alert(description);
+    
     try {
       
         await createMenuItem({
@@ -30,6 +38,15 @@ const Admin = () => {
       console.error(e.message);
     }
   };
+
+  const handleDelete = () => {
+    deleteMenuItem({
+        variables: { name: selectedItem }
+    });
+    setSelectedItem("");
+  };
+
+  if (loading) return <p>Loading...</p>;
 
   return (
     <div>
@@ -76,6 +93,18 @@ const Admin = () => {
         </form>
         {error && <div>Error adding menu item.</div>}
       </section>
+      <div>
+            <h2>Delete menu item:</h2>
+            <div><select value={selectedItem} onChange={(e) => setSelectedItem(e.target.value)}>
+                <option value="">Select item to delete</option>
+                {data.menuItems.map((item) => (
+                    <option key={item.id} value={item.name}>
+                        {item.name}
+                    </option>
+                ))}
+            </select></div>
+            <button onClick={handleDelete} disabled={!selectedItem}>Delete</button>
+        </div>
     </div>
   );
 };
