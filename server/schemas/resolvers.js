@@ -1,4 +1,7 @@
-const { MenuItem, Order, Review } = require('../models');
+const { MenuItem, Order, Review, User } = require('../models');
+const { AuthenticationError } = require('apollo-server-express');
+const { signToken } = require('../utils/auth');
+
 
 const resolvers = {
     //define resolvers for queries
@@ -59,8 +62,25 @@ const resolvers = {
         const order = await Order.findByIdAndDelete(_id);
         return order;
       },
+      login: async (_parent, { email, password }) => {
+        const user = await User.findOne({ email });
+  
+        if (!user) {
+            throw new AuthenticationError('User not found.');
+        }
+  
+        const pwd = await user.isCorrectPassword(password);
+  
+        if (!pwd) {
+            throw new AuthenticationError('Wrong Password!');
+        }
+  
+        const token = signToken(user);
+        return { token, user };
+    },
     },
     
+  
     //resolvers for review
     // Review: {
     //   //get menu item for a review  

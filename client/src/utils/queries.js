@@ -12,15 +12,3 @@ export const GET_MENU_ITEMS = gql`
   }
 `;
 
-
-export const GET_MENU_ITEMS = gql`
-  query {
-    menuItems {
-      _id
-      name
-      description
-      price
-      image
-    }
-  }
-`;

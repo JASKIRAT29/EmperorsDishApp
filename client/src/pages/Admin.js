@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useMutation, useQuery } from '@apollo/client';
 import { CREATE_MENU_ITEM, DELETE_MENU_ITEM, UPDATE_MENU_ITEM } from '../utils/mutations';
 import { GET_MENU_ITEMS } from '../utils/queries';
+import Auth from '../utils/auth';
+import { Button } from 'react-bootstrap';
 
 
 const Admin = () => {
@@ -22,7 +24,12 @@ const Admin = () => {
     refetchQueries: [{ query: GET_MENU_ITEMS }],
   });  
 
+  const token = Auth.loggedIn() ? Auth.getToken() : null;
 
+  if (!token) {
+    window.location.assign('/Login');
+    return false;
+  }
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     
@@ -86,6 +93,12 @@ const Admin = () => {
     <div>
       <section className="add-menu-item">
         <h2>Add item to menu:</h2>
+        <Button  className="button-container"
+          type='submit'
+          variant='success'
+          onClick={Auth.logout}>
+          Logout
+        </Button>
         <form onSubmit={handleFormSubmit}>
           <div>
             <label htmlFor="name">Name:</label>
