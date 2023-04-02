@@ -27,9 +27,8 @@ const typeDefs = gql`
 
   type Review {
     _id: ID!
-    name: String
-    rating: Int
-    comment: String
+    name: String!
+    comment: String!
     createdAt: String
   }
 
@@ -69,7 +68,7 @@ type User {
     deleteMenuItem(_id: ID): MenuItem
     createOrder(order: OrderInput!): Order
     deleteOrder(_id: ID): Order
-    createReview(menuItemId: ID, rating: Int, comment: String): Review
+    createReview(_id: ID, name:String, comment: String): Review
     deleteReview(_id: ID): Review
     login(email: String!, password: String!): Auth
   }

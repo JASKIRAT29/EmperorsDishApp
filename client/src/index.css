@@ -247,8 +247,24 @@ hr {
 
 /* -------------------------------- */
 
-.itmPrice{
-    font-family: 'Roboto Condensed', sans-serif;
+/*-------- Admin section */
+.admin-container {
+    width: 50%;
+    margin: 4rem auto;
+    font-family: "Montserrat", sans-serif;
+}
+
+.admin-container h2 {
+    margin-bottom: 1rem;
+}
+.add-menu-item {
+    margin-bottom: 1rem;
+}
+
+/*------- end of admin */
+
+.itmPrice {
+    font-family: "Roboto Condensed", sans-serif;
     color: #1aa06b;
     font-size: 14px;
     line-height: 1.5;
@@ -260,18 +276,17 @@ hr {
     width: 100%;
     flex-direction: column;
     justify-content: left;
-    align-items:flex-start;
+    align-items: flex-start;
     margin-top: 1rem;
-  }
-  .quantity {
+}
+.quantity {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0;
-    
-  }
-  .quantity__minus,
-  .quantity__plus {
+}
+.quantity__minus,
+.quantity__plus {
     display: block;
     width: 22px;
     height: 27px;
@@ -280,19 +295,19 @@ hr {
     text-decoration: none;
     text-align: center;
     line-height: 23px;
-  }
-  .quantity__minus:hover,
-  .quantity__plus:hover {
+}
+.quantity__minus:hover,
+.quantity__plus:hover {
     background: #575b71;
     color: #fff;
-  } 
-  .quantity__minus {
+}
+.quantity__minus {
     border-radius: 3px 0 0 3px;
-  }
-  .quantity__plus {
+}
+.quantity__plus {
     border-radius: 0 3px 3px 0;
-  }
-  .quantity__input {
+}
+.quantity__input {
     width: 32px;
     height: 19px;
     margin: 0;
@@ -304,15 +319,15 @@ hr {
     border-right: 2px solid #dee0ee;
     background: #fff;
     color: #8184a1;
-  }
-  .quantity__minus:link,
-  .quantity__plus:link {
+}
+.quantity__minus:link,
+.quantity__plus:link {
     color: #8184a1;
-  } 
-  .quantity__minus:visited,
-  .quantity__plus:visited {
+}
+.quantity__minus:visited,
+.quantity__plus:visited {
     color: #fff;
-  }
+}
 
 @media only screen and (min-width: 765px) {
     header {
