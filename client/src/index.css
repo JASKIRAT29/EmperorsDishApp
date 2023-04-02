@@ -203,6 +203,50 @@ table h2 {
     text-align: center;
 }
 
+/* ----------cart section----------------- */
+.cart {
+    width: 80%;
+    margin: 4rem auto 0;
+}
+.row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+}
+
+.cart_img {
+    display: flex;
+}
+
+.cart-title {
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 2rem;
+}
+
+.cart_img img {
+    width: 40px;
+    margin-right: 1rem;
+}
+
+.total {
+    margin-top: 2rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+hr {
+    margin-top: 1rem;
+}
+.price-span {
+    margin-right: 1rem;
+}
+
+/* -------------------------------- */
+
 @media only screen and (min-width: 765px) {
     header {
         flex-direction: row;
@@ -231,5 +275,12 @@ table h2 {
 
     .review h3 {
         font-size: 2rem;
+    }
+
+    .cart {
+        max-width: 60%;
+    }
+    .row {
+        flex-direction: row;
     }
 }
