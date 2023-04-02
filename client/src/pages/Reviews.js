@@ -1,17 +1,38 @@
 import React from "react";
 import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useQuery, useMutation } from '@apollo/client';
+
+import { GET_REVIEWS } from '../utils/queries';
+import { CREATE_REVIEW } from '../utils/mutations';
 
 const Reviews = () => {
     const [name, setName] = useState("");
     const [message, setMessage] = useState("");
-    const handleSubmit = (e) => {
+
+    const { loading, error, data } = useQuery(GET_REVIEWS);
+    const reviews = data?.reviews || [];
+
+    const [createReview] = useMutation(CREATE_REVIEW);
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        try {
+            const { data } = await createReview({
+              variables: { name: name, comment: message }
+            });
         console.log(name, message);
         setMessage("");
         setName("");
+        }catch(err){
+         console.log(err);
+        }
     };
+
+    if (loading) return <p>Loading...</p>;
+    if (error) console.log(error);//return <p>Error</p>;
+    
     return (
         <div className="review">
             <h3>Please Review our food</h3>
@@ -36,6 +57,14 @@ const Reviews = () => {
                     submit
                 </Button>
             </form>
+            <div className="reviews">
+                {reviews.map((review) => (
+                <div key={review.id}>
+                    <h4>{review.name}</h4>
+                    <p>{review.comment}</p>
+                </div>
+                ))}
+            </div>
         </div>
     );
 };
