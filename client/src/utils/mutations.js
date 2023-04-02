@@ -13,7 +13,7 @@ export const CREATE_MENU_ITEM = gql`
 `;
 
 export const UPDATE_MENU_ITEM = gql`
-  mutation UpdateMenuItem($_id: ID!, $name: String!, $description: String!, $price: Float!, $image: String!) {
+  mutation updateMenuItem($_id: ID!, $name: String!, $description: String!, $price: Float!, $image: String!) {
     updateMenuItem(_id: $_id, name: $name, description: $description, price: $price, image: $image) {
       _id
       name
@@ -25,7 +25,7 @@ export const UPDATE_MENU_ITEM = gql`
 `;
 
 export const DELETE_MENU_ITEM = gql`
-  mutation DeleteMenuItem($_id: ID!) {
+  mutation deleteMenuItem($_id: ID!) {
     deleteMenuItem(_id: $_id) {
       _id
       name
@@ -34,18 +34,6 @@ export const DELETE_MENU_ITEM = gql`
       image
     }
   }
-`;
-
-export const LOGIN_USER = gql`
-    mutation login($email: String!, $password: String!) {
-        login(email: $email, password: $password) {
-            token
-            user {
-                _id
-                username
-            }
-        }
-    }
 `;
 
 // export const ADD_ITEM_TO_CART = gql`
@@ -68,4 +56,27 @@ export const ADD_ITEM_TO_CART = gql`
       price
     }
   }
+`;
+=======
+export const CREATE_REVIEW = gql`
+  mutation createReview($name: String!, $comment: String!, $rating: Int) {
+    createReview(name: $name, comment: $comment, rating: $rating) {
+      _id
+      name
+      comment
+      rating
+      createdAt
+    }
+  }`
+
+export const LOGIN_USER = gql`
+    mutation login($email: String!, $password: String!) {
+        login(email: $email, password: $password) {
+            token
+            user {
+                _id
+                username
+            }
+        }
+    }
 `;
