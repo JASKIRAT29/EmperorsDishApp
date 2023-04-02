@@ -12,3 +12,14 @@ export const GET_MENU_ITEMS = gql`
   }
 `;
 
+const GET_REVIEWS = gql`
+  query getReviews {
+    reviews {
+      id
+      name
+      rating
+      comment
+      createdAt
+    }
+  }
+`;
