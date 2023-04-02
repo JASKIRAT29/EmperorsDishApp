@@ -81,12 +81,11 @@ export const ADD_ITEM_TO_CART = gql`
 `;
 
 export const CREATE_REVIEW = gql`
-    mutation createReview($name: String!, $comment: String!, $rating: Int) {
-        createReview(name: $name, comment: $comment, rating: $rating) {
+    mutation createReview($name: String!, $comment: String!) {
+        createReview(name: $name, comment: $comment) {
             _id
             name
             comment
-            rating
             createdAt
         }
     }

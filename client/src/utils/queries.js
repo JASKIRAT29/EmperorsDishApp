@@ -17,7 +17,6 @@ export const GET_REVIEWS = gql`
     reviews {
       _id
       name
-      rating
       comment
       createdAt
     }

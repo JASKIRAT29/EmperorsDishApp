@@ -59,7 +59,7 @@ const Menu = () => {
                 <div className="feature-grid">
                     {menuItems.map((itm) => {
                         return(
-                            <article>
+                            <article key = {itm._id}>
                                 <img src={itm.image}></img>
                                 <h3>{itm.name}</h3>
                                 <p>
@@ -74,7 +74,13 @@ const Menu = () => {
                                 <div className="containerqty">
                                     <div className="quantity">
                                         <button className='quantity__minus' onClick={decrement}>-</button>
-                                        <input name="quantity" type="text" className="quantity__input" value={count}></input>
+                                        <input 
+                                            name="quantity" 
+                                            type="text" 
+                                            className="quantity__input" 
+                                            value={count}
+                                            onChange={(event) => setCount(parseInt(event.target.value) || 0)}  
+                                        />
                                         <button className='quantity__plus' onClick={increment}>+</button>
                                     </div>
                                 </div>
