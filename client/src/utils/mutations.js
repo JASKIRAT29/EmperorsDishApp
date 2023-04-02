@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const CREATE_MENU_ITEM = gql`
-  mutation createMenuItem($name: String!, $description: String!, $price: Float!, $image: String!) {
+  mutation CreateMenuItem($name: String!, $description: String!, $price: Float!, $image: String!) {
     createMenuItem(name: $name, description: $description, price: $price, image: $image) {
       _id
       name
@@ -36,6 +36,28 @@ export const DELETE_MENU_ITEM = gql`
   }
 `;
 
+// export const ADD_ITEM_TO_CART = gql`
+// mutation AddItemToCart($item: ID!) {
+//   addItemToCart(item: $item) {
+//     id
+//     name
+//     price
+//     quantity
+//   }
+// }
+// `;
+
+export const ADD_ITEM_TO_CART = gql`
+  mutation addItemToCart($item: ID! ) {
+    addItemToCart(item: $item ) {
+      id
+      name
+      description
+      price
+    }
+  }
+`;
+=======
 export const CREATE_REVIEW = gql`
   mutation createReview($name: String!, $comment: String!, $rating: Int) {
     createReview(name: $name, comment: $comment, rating: $rating) {
@@ -46,3 +68,15 @@ export const CREATE_REVIEW = gql`
       createdAt
     }
   }`
+
+export const LOGIN_USER = gql`
+    mutation login($email: String!, $password: String!) {
+        login(email: $email, password: $password) {
+            token
+            user {
+                _id
+                username
+            }
+        }
+    }
+`;
