@@ -15,6 +15,10 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
 
+app.get('/menu',(req,res)=>{
+  res.send(200).json({name:"MENU ROUTE"})
+})
+
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/src/App.js'));
 });

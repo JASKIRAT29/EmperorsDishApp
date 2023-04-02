@@ -7,7 +7,9 @@ import {
 } from "../utils/mutations";
 import { GET_MENU_ITEMS } from "../utils/queries";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
+import TextField from "@mui/material/TextField";import Auth from '../utils/auth';
+import { button } from 'react-bootstrap';
+
 //import  { showUploadWidget } from 'cloudinary'; // import the showUploadWidget function
 const cloudinary = require('cloudinary').v2;
 
@@ -40,39 +42,45 @@ const Admin = () => {
         }
     );
 
-    //do if add item
+  const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+  if (!token) {
+    window.location.assign('/Login');
+    return false;
+  }
     const handleImageUpload = () => {
         //showUploadWidget(); // call the showUploadWidget function on button click
       };
 
-    const handleFormSubmit = async (event) => {
-        event.preventDefault();
-
-        try {
-            await createMenuItem({
-                variables: {
-                    name: name,
-                    description: description,
-                    price: price,
-                    image: image,
-                },
-            });
-            setName("");
-            setDescription("");
-            setPrice(0);
-            setImage("");
-        } catch (e) {
-            console.error(e.message);
-        }
-    };
-
-    //do if delete button
-    const handleDelete = () => {
-        deleteMenuItem({
-            variables: { _id: selectedItem },
-        });
-        setSelectedItem("");
-    };
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    
+    try {
+      
+        await createMenuItem({
+            variables: { 
+              name: name,
+              description: description,
+              price: price,
+              image: image,
+            }
+          });
+      setName('');
+      setDescription('');
+      setPrice(0);
+      setImage('');
+    } catch (e) {
+      console.error(e.message);
+    }
+  };
+  
+  //do if delete button
+  const handleDelete = () => {
+    deleteMenuItem({
+        variables: { _id: selectedItem }
+    });
+    setSelectedItem("");
+  };
 
     //do if update button
     const handleMenuItemChange = (event) => {
@@ -118,6 +126,7 @@ const Admin = () => {
     //update div
     return (
         <div className="admin-container">
+          <button onClick={Auth.logout}>Logout</button>
             <section className="add-menu-item">
                 <h2>Add item to menu:</h2>
                 <form onSubmit={handleFormSubmit}>

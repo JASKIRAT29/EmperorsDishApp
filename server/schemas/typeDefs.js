@@ -32,6 +32,16 @@ const typeDefs = gql`
     createdAt: String
   }
 
+  type Auth {
+    token: ID!
+    user: User
+}
+
+type User {
+  _id: ID!
+  username: String
+  email: String
+}
   input OrderItemInput {
     itemId: ID
     quantity: Int
@@ -60,6 +70,7 @@ const typeDefs = gql`
     deleteOrder(_id: ID): Order
     createReview(_id: ID, name:String, comment: String): Review
     deleteReview(_id: ID): Review
+    login(email: String!, password: String!): Auth
   }
 
   

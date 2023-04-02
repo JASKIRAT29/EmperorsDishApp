@@ -1,77 +1,100 @@
 import React, { useState } from "react";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-
+import { useMutation } from "@apollo/client/react/hooks";
 import "../App.css";
+import { LOGIN_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
+import { Form, Button, Alert } from 'react-bootstrap';
 
-function App() {
-  // React States
-  const [errorMessages, setErrorMessages] = useState({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
+const LoginForm = () => {
+const [userFormData, setUserFormData] = useState({ email: '', password: '' });
+const [validated] = useState(false);
+const [showAlert, setShowAlert] = useState(false);
+const [loginUser ] = useMutation(LOGIN_USER)
+const handleInputChange = (event) => {
+  const { name, value } = event.target;
+  setUserFormData({ ...userFormData, [name]: value });
+};
 
-  // User Login info
-  const database = [
-    {
-      username: "user1",
-      password: "pass1"
-    },
-    {
-      username: "user2",
-      password: "pass2"
-    }
-  ];
+const handleFormSubmit = async (event) => {
+  event.preventDefault();
 
-  const errors = {
-    uname: "invalid username",
-    pass: "invalid password"
-  };
-
-  const handleSubmit = (event) => {
-    //Prevent page reload
+  // check if form has everything (as per react-bootstrap docs)
+  const form = event.currentTarget;
+  if (form.checkValidity() === false) {
     event.preventDefault();
-
-    var { uname, pass } = document.forms[0];
-
-    // Find user login info
-    const userData = database.find((user) => user.username === uname.value);
-
-    // Compare user info
-    if (userData) {
-      if (userData.password !== pass.value) {
-        // Invalid password
-        setErrorMessages({ name: "pass", message: errors.pass });
-      } else {
-        setIsSubmitted(true);
-      }
-    } else {
-      // Username not found
-      setErrorMessages({ name: "uname", message: errors.uname });
+    event.stopPropagation();
+    
+  }
+  
+  try {
+    console.log("1 loginUser",userFormData);
+    const { data } = await loginUser({ variables: { ...userFormData } });
+    //const response = await loginUser(userFormData);
+    console.log("2 loginUser",userFormData);
+    Auth.login(data.login.token)
+    } catch (err) {
+      alert(err);
+      console.error(err);
     }
-  };
+
+  setUserFormData({
+    username: '',
+    email: '',
+    password: '',
+  });
+};
+
 
   // Generate JSX code for error message
-  const renderErrorMessage = (name) =>
-    name === errorMessages.name && (
-      <div className="error">{errorMessages.message}</div>
-    );
+  // const renderErrorMessage = (name) =>
+  //   name === errorMessages.name && (
+  //     <div className="error">{errorMessages.message}</div>
+  //   );
 
   // JSX code for login form
   const renderForm = (
     <div className="form">
-      <form onSubmit={handleSubmit}>
-        <div className="input-container">
-          <label>Username </label>
-          <input type="text" name="uname" required />
-          {renderErrorMessage("uname")}
-        </div>
-        <div className="input-container">
-          <label>Password </label>
-          <input type="password" name="pass" required />
-          {renderErrorMessage("pass")}
-        </div>
+      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+        <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
+          Something went wrong with your login credentials!
+        </Alert>
+        <Form.Group className="input-container">
+          <Form.Label htmlFor='email'>Email</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Your email'
+            name='email'
+            onChange={handleInputChange}
+            value={userFormData.email}
+            required
+          />
+          {/* <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback> */}
+        </Form.Group>
+
+        <Form.Group className="input-container">
+          <Form.Label htmlFor='password'>Password</Form.Label>
+          <Form.Control
+            type='password'
+            placeholder='Your password'
+            name='password'
+            onChange={handleInputChange}
+            value={userFormData.password}
+            required
+          />
+          {/* <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback> */}
+        </Form.Group>
         <div className="button-container">
-          <input type="submit" />
+        <Button  
+          disabled={!(userFormData.email && userFormData.password)}
+          type='submit'
+          variant='success'>
+          Submit
+        </Button>
         </div>
-      </form>
+      </Form>
+
+
     </div>
   );
 
@@ -82,12 +105,12 @@ function App() {
             <LockOutlinedIcon />
         </div>
         <div className="title">Sign In</div>
-        {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
+        { renderForm}
       </div>
     </div>
   );
 }
 
-export default App;
+export default LoginForm;
 
 
