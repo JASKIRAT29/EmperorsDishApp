@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMutation, useQuery } from '@apollo/client';
-import { CREATE_MENU_ITEM, DELETE_MENU_ITEM } from '../utils/mutations';
+import { CREATE_MENU_ITEM, DELETE_MENU_ITEM, UPDATE_MENU_ITEM } from '../utils/mutations';
 import { GET_MENU_ITEMS } from '../utils/queries';
 
 
@@ -12,10 +12,16 @@ const Admin = () => {
   const [createMenuItem, { error }] = useMutation(CREATE_MENU_ITEM);
 
   const [selectedItem, setSelectedItem] = useState("");
-    const {loading, data} = useQuery(GET_MENU_ITEMS);
-    const [deleteMenuItem] = useMutation(DELETE_MENU_ITEM, {
-        refetchQueries: [{ query: GET_MENU_ITEMS }]
-    });
+  const {loading, data} = useQuery(GET_MENU_ITEMS);
+  const [deleteMenuItem] = useMutation(DELETE_MENU_ITEM, {
+      refetchQueries: [{ query: GET_MENU_ITEMS }]
+  });
+
+  const [selectedItemId, setSelectedItemId] = useState('');
+  const [updateMenuItem] = useMutation(UPDATE_MENU_ITEM, {
+    refetchQueries: [{ query: GET_MENU_ITEMS }],
+  });  
+
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -46,7 +52,35 @@ const Admin = () => {
     setSelectedItem("");
   };
 
+  const handleMenuItemChange = (event) => {
+    const itemId = event.target.value;
+    setSelectedItemId(itemId);
+  };
+  
+  const handleUpdateMenuItem = async () => {
+    try {
+      await updateMenuItem({
+        variables: {
+          _id: selectedItemId,
+          name,
+          description,
+          price,
+          image,
+        },
+      });
+      setSelectedItemId('');
+      setName('');
+      setDescription('');
+      setPrice('');
+      setImage('');
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
+
   if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error! </p>;
 
   return (
     <div>
@@ -105,6 +139,42 @@ const Admin = () => {
             </select></div>
             <button onClick={handleDelete} disabled={!selectedItem}>Delete</button>
         </div>
+      <div>
+        <h2>Update Menu Item</h2>
+        <label>
+          Select a menu item to update:
+          <select value={selectedItemId} onChange={handleMenuItemChange}>
+            <option value="">--Select--</option>
+            {data.menuItems.map((menuItem) => (
+              <option key={menuItem._id} value={menuItem._id}>
+                {menuItem.name}
+              </option>
+            ))}
+          </select>
+        </label>
+        <br />
+        <label>
+          Name:
+          <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        </label>
+        <br />
+        <label>
+          Description:
+          <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
+        </label>
+        <br />
+        <label>
+          Price:
+          <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} />
+        </label>
+        <br />
+        <label>
+          Image URL:
+          <input type="text" value={image} onChange={(e) => setImage(e.target.value)} />
+        </label>
+        <br />
+        <button onClick={handleUpdateMenuItem}>Update</button>
+      </div>
     </div>
   );
 };
