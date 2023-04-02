@@ -16,7 +16,6 @@ const Reviews = () => {
     };
     return (
         <div className="review">
-            <h3>Please Review our food</h3>
             <form onSubmit={handleSubmit} className="review-form">
                 <TextField
                     value={title}
