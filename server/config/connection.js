@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 
 // Define database connection string
 const connectionString = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/restaurant';
-
 // Connect to the database
 mongoose.connect(connectionString, {
   useNewUrlParser: true,

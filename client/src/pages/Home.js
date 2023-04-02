@@ -15,7 +15,11 @@ const Home = () => {
                     </div>
 
                     <table>
-                        <h2>Opening hours</h2>
+                        <thead>
+                        {/* <h2>Opening hours</h2> */}
+
+                        </thead>
+                        <tbody>
                         <tr title="Open Monday at 9am to 6pm">
                             <td>Monday</td>
                             <td>09:00</td>
@@ -58,6 +62,7 @@ const Home = () => {
                             <td>-</td>
                             <td>16:00</td>
                         </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -107,7 +112,7 @@ const Home = () => {
                                 alt="Fish and Rice"
                             ></img>
                         </a>
-                        <h3>Pizzia</h3>
+                        <h3>Pizzas</h3>
                         <p>Our pizzas made with fresh ingredients</p>
                     </article>
                 </div>
