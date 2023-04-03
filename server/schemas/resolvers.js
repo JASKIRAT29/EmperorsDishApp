@@ -81,16 +81,6 @@ const resolvers = {
     },
     
   
-    //resolvers for review
-    // Review: {
-    //   //get menu item for a review  
-    //   menuItem: async (review) => {
-    //     return await MenuItem.findById(review.menuItemId);
-    //   },
-    // },
-    // reviews: async () => {
-    //   return await Review.find();
-    // },
 
   };
   

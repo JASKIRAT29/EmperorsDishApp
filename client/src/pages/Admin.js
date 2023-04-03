@@ -7,12 +7,10 @@ import {
 } from "../utils/mutations";
 import { GET_MENU_ITEMS } from "../utils/queries";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";import Auth from '../utils/auth';
-import { button } from 'react-bootstrap';
-
-//import  { showUploadWidget } from 'cloudinary'; // import the showUploadWidget function
-const cloudinary = require('cloudinary').v2;
-
+import TextField from "@mui/material/TextField";
+import Auth from '../utils/auth';
+import UploadWidget from "../components/uploadWidget";
+//import { button } from 'react-bootstrap';
 
 const Admin = () => {
     //vars for create
@@ -48,9 +46,7 @@ const Admin = () => {
     window.location.assign('/Login');
     return false;
   }
-    const handleImageUpload = () => {
-        //showUploadWidget(); // call the showUploadWidget function on button click
-      };
+   
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -178,7 +174,7 @@ const Admin = () => {
                             onChange={(event) => setImage(event.target.value)}
                         />
                     </div>
-                    <Button onClick={handleImageUpload}>Upload Image</Button>
+                    <UploadWidget />
                     <Button type={"submit"} variant="outlined">
                         Add Item
                     </Button>
