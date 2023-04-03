@@ -65,6 +65,7 @@ const Admin = () => {
       setDescription('');
       setPrice(0);
       setImage('');
+      alert("Item has been sucessfully added to menu.");
     } catch (e) {
       console.error(e.message);
     }
@@ -72,6 +73,7 @@ const Admin = () => {
   
   //do if delete button
   const handleDelete = () => {
+    alert(selectedItem);
     deleteMenuItem({
         variables: { _id: selectedItem },
         onCompleted: () => {

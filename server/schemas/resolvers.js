@@ -38,8 +38,8 @@ const resolvers = {
         return menuItem;
       },
       //delete menu item by id
-      deleteMenuItem: async (_, { id }) => {
-        const menuItem = await MenuItem.findByIdAndDelete(id);
+      deleteMenuItem: async (_, { _id }) => {
+        const menuItem = await MenuItem.findByIdAndDelete(_id);
         return menuItem;
       },
       //create review
