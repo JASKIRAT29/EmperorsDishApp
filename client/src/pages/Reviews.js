@@ -26,12 +26,11 @@ const Reviews = () => {
             return;
           }
 
-        alert(name +  " "  + message);
         try {
             const { data } = await createReview({
               variables: { name: name, comment: message }
             });
-        alert(data);    
+   
         console.log(data);
         setMessage("");
         setName("");

@@ -26,8 +26,8 @@ const resolvers = {
     //define resolvers for mutations
     Mutation: {
       //create menu item  
-      createMenuItem: async (_, { input }) => {
-        const menuItem = await MenuItem.create(input);
+      createMenuItem: async (_, { name, description, price, image}) => {
+        const menuItem = await MenuItem.create({name, description, price, image});
         return menuItem;
       },
       //update menu item

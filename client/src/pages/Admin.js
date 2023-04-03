@@ -73,7 +73,10 @@ const Admin = () => {
   //do if delete button
   const handleDelete = () => {
     deleteMenuItem({
-        variables: { _id: selectedItem }
+        variables: { _id: selectedItem },
+        onCompleted: () => {
+            alert("Item deleted successfully!");
+          },
     });
     setSelectedItem("");
   };

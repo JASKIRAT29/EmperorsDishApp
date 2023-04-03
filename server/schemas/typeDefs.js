@@ -65,7 +65,7 @@ type User {
   type Mutation {
     createMenuItem(name: String, description: String, price: Float, image: String): MenuItem
     updateMenuItem(_id: ID, name: String, description: String, price: Float, image: String): MenuItem
-    deleteMenuItem(_id: ID): MenuItem
+    deleteMenuItem(_id: ID!): MenuItem
     createOrder(order: OrderInput!): Order
     deleteOrder(_id: ID): Order
     createReview(name:String!, comment: String!): Review
