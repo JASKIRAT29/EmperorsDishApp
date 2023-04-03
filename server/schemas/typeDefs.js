@@ -68,7 +68,7 @@ type User {
     deleteMenuItem(_id: ID): MenuItem
     createOrder(order: OrderInput!): Order
     deleteOrder(_id: ID): Order
-    createReview(_id: ID, name:String, comment: String): Review
+    createReview(name:String!, comment: String!): Review
     deleteReview(_id: ID): Review
     login(email: String!, password: String!): Auth
   }

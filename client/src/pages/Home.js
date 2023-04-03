@@ -108,7 +108,7 @@ const Home = () => {
                     <article>
                         <a href="/menu">
                             <img
-                                src="/images/img-20230327-WA0040.jpg"
+                                src="/images/pizza.jpg"
                                 alt="Fish and Rice"
                             ></img>
                         </a>

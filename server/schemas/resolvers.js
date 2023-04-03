@@ -43,8 +43,8 @@ const resolvers = {
         return menuItem;
       },
       //create review
-      createReview: async (_, { input }) => {
-        const review = await Review.create(input);
+      createReview: async (_, { name, comment }) => {
+        const review = await Review.create({name, comment});
         return review;
       },
       //delete review by id
