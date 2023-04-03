@@ -31,9 +31,9 @@ const resolvers = {
         return menuItem;
       },
       //update menu item
-      updateMenuItem: async (_, { id, input }) => {
-        const menuItem = await MenuItem.findById(id);
-        menuItem.set(input);
+      updateMenuItem: async (_, { _id, name, description, price, image }) => {
+        const menuItem = await MenuItem.findById(_id);
+        menuItem.set({name, description, price, image});
         await menuItem.save();
         return menuItem;
       },

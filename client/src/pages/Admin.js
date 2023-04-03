@@ -31,7 +31,7 @@ const Admin = () => {
     const [selectedItemId, setSelectedItemId] = useState("");
     const [updateName, setUpdateName] = useState("");
     const [updateDescription, setUpdateDescription] = useState("");
-    const [updatePrice, setUpdatePrice] = useState("");
+    const [updatePrice, setUpdatePrice] = useState(0);
     const [updateImage, setUpdateImage] = useState("");
     const [updateMenuItem, { error: updateError }] = useMutation(
         UPDATE_MENU_ITEM,
@@ -65,7 +65,7 @@ const Admin = () => {
       setDescription('');
       setPrice(0);
       setImage('');
-      alert("Item has been sucessfully added to menu.");
+      alert("Item sucessfully added to menu.");
     } catch (e) {
       console.error(e.message);
     }
@@ -73,17 +73,16 @@ const Admin = () => {
   
   //do if delete button
   const handleDelete = () => {
-    alert(selectedItem);
     deleteMenuItem({
         variables: { _id: selectedItem },
         onCompleted: () => {
-            alert("Item deleted successfully!");
+            alert("Item successfully deleted.");
           },
     });
     setSelectedItem("");
   };
 
-    //do if update button
+    //do if selection list of update button
     const handleMenuItemChange = (event) => {
         const itemId = event.target.value;
         setSelectedItemId(itemId);
@@ -103,15 +102,16 @@ const Admin = () => {
                     _id: selectedItemId,
                     name: updateName,
                     description: updateDescription,
-                    price: updatePrice,
+                    price: parseFloat(updatePrice),
                     image: updateImage,
                 },
             });
             setSelectedItemId("");
             setUpdateName("");
             setUpdateDescription("");
-            setUpdatePrice("");
+            setUpdatePrice(0);
             setUpdateImage("");
+            alert("Item successfully updated.")
         } catch (error) {
             console.error(error);
         }
@@ -235,8 +235,9 @@ const Admin = () => {
                         sx={{ margin: 1 }}
                         size={"small"}
                         type={"text"}
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        id="name"
+                        value={updateName}
+                        onChange={(e) => setUpdateName(e.target.value)}
                     />
                 </label>
                 <br />
@@ -246,8 +247,9 @@ const Admin = () => {
                         sx={{ margin: 1 }}
                         size={"small"}
                         type="text"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
+                        id="description"
+                        value={updateDescription}
+                        onChange={(e) => setUpdateDescription(e.target.value)}
                     />
                 </label>
                 <br />
@@ -257,8 +259,9 @@ const Admin = () => {
                         sx={{ margin: 1 }}
                         size="small"
                         type={"number"}
-                        value={price}
-                        onChange={(e) => setPrice(e.target.value)}
+                        id="price"
+                        value={updatePrice}
+                        onChange={(e) => setUpdatePrice(e.target.value)}
                     />
                 </label>
                 <br />
@@ -268,8 +271,9 @@ const Admin = () => {
                         sx={{ margin: 1 }}
                         size={"small"}
                         type={"text"}
-                        value={image}
-                        onChange={(e) => setImage(e.target.value)}
+                        id="image"
+                        value={updateImage}
+                        onChange={(e) => setUpdateImage(e.target.value)}
                     />
                 </label>
                 <br />
