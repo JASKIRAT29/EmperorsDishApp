@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require( 'apollo-server-express');
 
 // Define GraphQL type definitions
 const typeDefs = gql`
@@ -65,10 +65,10 @@ type User {
   type Mutation {
     createMenuItem(name: String, description: String, price: Float, image: String): MenuItem
     updateMenuItem(_id: ID, name: String, description: String, price: Float, image: String): MenuItem
-    deleteMenuItem(_id: ID): MenuItem
+    deleteMenuItem(_id: ID!): MenuItem
     createOrder(order: OrderInput!): Order
     deleteOrder(_id: ID): Order
-    createReview(_id: ID, name:String, comment: String): Review
+    createReview(name:String!, comment: String!): Review
     deleteReview(_id: ID): Review
     login(email: String!, password: String!): Auth
   }

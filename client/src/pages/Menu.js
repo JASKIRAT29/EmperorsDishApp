@@ -55,7 +55,7 @@ const Menu = () => {
             {" "}
            
             <section className="feature">
-                <h2>OUR FEATURED FOOD ITEMS</h2>
+                <h2>DAILY MENU ITEMS</h2>
                 <div className="feature-grid">
                     {menuItems.map((itm) => {
                         return(

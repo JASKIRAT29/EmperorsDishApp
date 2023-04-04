@@ -131,7 +131,8 @@ header img {
 
 .feature-grid img {
     max-width: 100%;
-    border-radius: 3px;
+    height: 250px;
+    border-radius: 7px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
@@ -257,9 +258,11 @@ hr {
 .admin-container h2 {
     margin-bottom: 1rem;
 }
+
 .add-menu-item {
     margin-bottom: 1rem;
-}
+
+  }
 
 /*------- end of admin */
 

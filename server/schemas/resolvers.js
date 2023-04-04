@@ -26,25 +26,25 @@ const resolvers = {
     //define resolvers for mutations
     Mutation: {
       //create menu item  
-      createMenuItem: async (_, { input }) => {
-        const menuItem = await MenuItem.create(input);
+      createMenuItem: async (_, { name, description, price, image}) => {
+        const menuItem = await MenuItem.create({name, description, price, image});
         return menuItem;
       },
       //update menu item
-      updateMenuItem: async (_, { id, input }) => {
-        const menuItem = await MenuItem.findById(id);
-        menuItem.set(input);
+      updateMenuItem: async (_, { _id, name, description, price, image }) => {
+        const menuItem = await MenuItem.findById(_id);
+        menuItem.set({name, description, price, image});
         await menuItem.save();
         return menuItem;
       },
       //delete menu item by id
-      deleteMenuItem: async (_, { id }) => {
-        const menuItem = await MenuItem.findByIdAndDelete(id);
+      deleteMenuItem: async (_, { _id }) => {
+        const menuItem = await MenuItem.findByIdAndDelete(_id);
         return menuItem;
       },
       //create review
-      createReview: async (_, { input }) => {
-        const review = await Review.create(input);
+      createReview: async (_, { name, comment }) => {
+        const review = await Review.create({name, comment});
         return review;
       },
       //delete review by id
@@ -81,16 +81,6 @@ const resolvers = {
     },
     
   
-    //resolvers for review
-    // Review: {
-    //   //get menu item for a review  
-    //   menuItem: async (review) => {
-    //     return await MenuItem.findById(review.menuItemId);
-    //   },
-    // },
-    // reviews: async () => {
-    //   return await Review.find();
-    // },
 
   };
   
