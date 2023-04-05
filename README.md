@@ -18,7 +18,7 @@ This is a full-stack MERN stack web application developed for a restaurant. The 
 
 This project has a live site. [Follow this link](https://emperors-dish-app.herokuapp.com/) to view Emperor's Dish App
 
-To view to project on your localhost, first download or clone this repository from github. Then in the terminal, navigate to the project directory and install dependencies by typing "npm install", finally type "npm run develop" to start the server and client simultaneously. 
+To view to project on your localhost, first download or clone this repository from github. Then in the terminal, navigate to the project directory and install dependencies by typing "npm install", finally type "npm run seed" to seed to database and "npm run develop" to start the server and client simultaneously. 
 
 ## Usage
 
