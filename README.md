@@ -12,15 +12,24 @@ This is a full-stack MERN stack web application developed for a restaurant. The 
 - [License](#license)
 - [Features](#features)
 - [Badges](#badges)
-- [Questions](#questions)
+- [Screenshots](#screenshots)
 
 ## Installation
 
 This project has a live site. [Follow this link](https://emperors-dish-app.herokuapp.com/) to view Emperor's Dish App
 
+To view to project on your localhost, first download or clone this repository from github. Then in the terminal, navigate to the project directory and install dependencies by typing "npm install", finally type "npm run develop" to start the server and client simultaneously. 
+
 ## Usage
 
 Once the app is running, you can browse the menu, place an order, and make a payment. The app also includes an admin section where the business owner can update the menu information.
+
+For security reasons there is no link to the admin section displayed on the website. The address of the page is ["/admin"](http://localhost:3000/admin) (note: you may need to change the port # in the address according to your system).
+
+To access this section please use the login criteria below:
+
+Username - Jana@test.com
+Password - jana123
 
 ## Credits
 
@@ -51,3 +60,10 @@ This project is licensed under the terms of the [MIT License](https://choosealic
 ## Questions
 
 Reach out to anyone listed in the Credits section for more details.
+
+## Screenshots
+
+![MenuPage](./screenshots/menu.jpeg)
+![ReviewPage](./screenshots/review.jpeg)
+![LoginPage](./screenshots/login.jpeg)
+![AdminPage](./screenshots/admin.jpeg)
