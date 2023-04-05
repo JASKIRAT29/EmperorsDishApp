@@ -12,7 +12,7 @@ This is a full-stack MERN stack web application developed for a restaurant. The 
 - [License](#license)
 - [Features](#features)
 - [Badges](#badges)
-- [Questions](#questions)
+- [Screenshots](#screenshots)
 
 ## Installation
 
@@ -60,3 +60,10 @@ This project is licensed under the terms of the [MIT License](https://choosealic
 ## Questions
 
 Reach out to anyone listed in the Credits section for more details.
+
+## Screenshots
+
+![MenuPage](./screenshots/menu.jpeg)
+![ReviewPage](./screenshots/review.jpeg)
+![LoginPage](./screenshots/login.jpeg)
+![AdminPage](./screenshots/admin.jpeg)
